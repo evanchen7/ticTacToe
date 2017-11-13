@@ -4,25 +4,38 @@
 
 // Start a game
 var TicTacToe = function () {
-
+  this.board = new generateNewBoard();
 };
 
 // Create a board
 
 var generateNewBoard = function () {
-  this.board = [['*', '*', '*'],
-                ['*', '*', '*'],
-                ['*', '*', '*']];
+  return [['*', '*', '*'],
+           ['*', '*', '*'],
+           ['*', '*', '*']];
 };
 
-// Toggle pieces with X
-var toggleX = function (x, y) {
-
-};
-
-// Toggle pieces with O
-var toggleO = function (x, y) {
-
+// Toggle board
+TicTacToe.prototype = {
+    toggleX: function (x, y) {
+      if (x <= 2 && y <= 2) {
+        this.board[x][y] = 'X';
+        this.showBoard();
+      } else {
+        throw 'Input valid ranges for X and Y';
+      }
+    },
+    toggleY: function (x, y) {
+      if (x <= 2 && y <= 2) {
+        this.board[x][y] = 'Y';
+        this.showBoard();
+      } else {
+        throw 'Input valid ranges for X and Y';
+      }
+    },
+    showBoard: function() {
+       return this.board;
+    }
 };
 
 // Collision detection
